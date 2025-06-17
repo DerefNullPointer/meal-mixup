@@ -19,4 +19,14 @@ public class IngredientServiceImpl implements IngredientService {
     public List<Ingredient> getAllIngredients() {
         return ingredientRepository.findAll();
     }
+
+    @Override
+    public void addIngredient(Ingredient ingredient) {
+        ingredientRepository.save(ingredient);
+    }
+
+    @Override
+    public void deleteIngredient(Long id) {
+        ingredientRepository.deleteById(id);
+    }
 }
