@@ -10,5 +10,5 @@ public interface IngredientService {
 
     void addIngredient(Ingredient ingredient);
 
-    void deleteIngredient(Long id);
+    void deleteIngredientById(Long id);
 }

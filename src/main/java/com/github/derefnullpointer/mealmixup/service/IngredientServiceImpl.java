@@ -26,7 +26,7 @@ public class IngredientServiceImpl implements IngredientService {
     }
 
     @Override
-    public void deleteIngredient(Long id) {
+    public void deleteIngredientById(Long id) {
         ingredientRepository.deleteById(id);
     }
 }
