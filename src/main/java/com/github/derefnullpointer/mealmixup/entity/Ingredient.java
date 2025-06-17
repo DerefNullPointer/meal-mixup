@@ -1,6 +1,8 @@
 package com.github.derefnullpointer.mealmixup.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.time.LocalDateTime;
 
@@ -15,6 +17,8 @@ public class Ingredient {
     private Long id;
 
     @Column(name = "name", nullable = false, length = 100)
+    @NotBlank(message = "Ingredient name is required.")
+    @Size(max = 100, message = "Ingredient cannot be more than 100 characters.")
     private String name;
 
     @Column(name = "created_at", updatable = false)
