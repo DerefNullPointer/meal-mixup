@@ -7,16 +7,38 @@
 </head>
 <body class="bg-light">
 <div class="container mt-5">
+
+  <!-- Ingredient Form -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <h2 class="card-title">Add Ingredient</h2>
+      <form th:action="@{/ingredients}" th:object="${ingredient}" method="post">
+        <div class="mb-3">
+          <label for="name" class="form-label">Ingredient Name</label>
+          <input type="text" th:field="*{name}" class="form-control" id="name">
+          <div class="text-danger mt-1" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Ingredient List -->
   <div class="card shadow-sm">
     <div class="card-body">
-      <h1 class="card-title text-center mb-4">Ingredient List</h1>
+      <h2 class="card-title mb-3">Ingredient List</h2>
       <ul class="list-group">
-        <li class="list-group-item" th:each="ingredient : ${ingredients}">
+        <li class="list-group-item d-flex justify-content-between align-items-center"
+            th:each="ingredient : ${ingredients}">
           <span th:text="${ingredient.name}">Ingredient Name</span>
+          <form th:action="@{/ingredients/delete/{id}(id=${ingredient.id})}" method="post" th:object="${ingredient}">
+            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+          </form>
         </li>
       </ul>
     </div>
   </div>
+
 </div>
 </body>
 </html>
