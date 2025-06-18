@@ -23,7 +23,7 @@ public class Ingredient {
     @Size(max = 100, message = "Ingredient cannot be more than 100 characters.")
     private String name;
 
-    @Column(name = "created_by")
+    @Column(name = "created_by", nullable = false)
     private String createdBy;
 
     @Column(name = "created_at", updatable = false)
